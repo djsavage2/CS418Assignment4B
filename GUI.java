@@ -2,6 +2,7 @@ import javax.swing.JLabel;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.widgets.TabFolder;
@@ -10,6 +11,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Table;
@@ -19,7 +21,7 @@ public class GUI {
 
 	protected Shell shell;
 	private Text txtInput;
-	private Table table;
+	private Table resultsTable;
 
 	/**
 	 * Launch the application.
@@ -57,50 +59,56 @@ public class GUI {
 		shell.setSize(450, 300);
 		shell.setText("SWT Application");
 		
-		Button btnRadioButton = new Button(shell, SWT.RADIO);
-		btnRadioButton.addSelectionListener(new SelectionAdapter() {
+		Button feature1Button = new Button(shell, SWT.RADIO);
+		feature1Button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 			}
 		});
-		btnRadioButton.setBounds(0, 10, 116, 19);
-		btnRadioButton.setText("Feature 1");
+		feature1Button.setBounds(0, 10, 91, 19);
+		feature1Button.setText("Feature 1");
 		
-		Button btnRadioButton_1 = new Button(shell, SWT.RADIO);
-		btnRadioButton_1.setBounds(87, 10, 116, 19);
-		btnRadioButton_1.setText("Feature 2");
+		Button feature2Button = new Button(shell, SWT.RADIO);
+		feature2Button.setBounds(87, 10, 91, 19);
+		feature2Button.setText("Feature 2");
 		
-		Button btnRadioButton_2 = new Button(shell, SWT.RADIO);
-		btnRadioButton_2.setBounds(175, 10, 116, 19);
-		btnRadioButton_2.setText("Feature 3");
+		Button feature3Button = new Button(shell, SWT.RADIO);
+		feature3Button.setBounds(175, 10, 91, 19);
+		feature3Button.setText("Feature 3");
 		
-		Button btnRadioButton_3 = new Button(shell, SWT.RADIO);
-		btnRadioButton_3.setBounds(265, 10, 116, 19);
-		btnRadioButton_3.setText("Feature 4");
+		Button feature4Button = new Button(shell, SWT.RADIO);
+		feature4Button.setBounds(265, 10, 91, 19);
+		feature4Button.setText("Feature 4");
 		
-		Button btnRadioButton_4 = new Button(shell, SWT.RADIO);
-		btnRadioButton_4.setBounds(355, 10, 116, 19);
-		btnRadioButton_4.setText("Feature 5");
-		
-		Button btnNewButton = new Button(shell, SWT.NONE);
-		btnNewButton.setBounds(329, 101, 105, 29);
-		btnNewButton.setText("Submit Query");
+		Button feature5Button = new Button(shell, SWT.RADIO);
+		feature5Button.setBounds(355, 10, 89, 19);
+		feature5Button.setText("Feature 5");
 		
 		txtInput = new Text(shell, SWT.BORDER);
 		txtInput.setBounds(193, 101, 130, 29);
 		
-		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
-		table.setBounds(10, 139, 424, 122);
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
+		resultsTable = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+		resultsTable.setBounds(10, 139, 424, 122);
+		resultsTable.setHeaderVisible(true);
+		resultsTable.setLinesVisible(true);
 		
-		Label lblNewLabel = new Label(shell, SWT.NONE);
-		lblNewLabel.setBounds(150, 108, 70, 17);
-		lblNewLabel.setText("Input:");
+		Label inputLabel = new Label(shell, SWT.NONE);
+		inputLabel.setBounds(150, 108, 70, 17);
+		inputLabel.setText("Input:");
 		
-		Label lblNewLabel_1 = new Label(shell, SWT.WRAP);
-		lblNewLabel_1.setBounds(10, 35, 424, 53);
-		lblNewLabel_1.setText("Query Text will display HeRe");
+		Label queryLabel = new Label(shell, SWT.WRAP);
+		queryLabel.setBounds(10, 35, 424, 53);
+		queryLabel.setText("Query Text will display HeRe");
+		
+		Button submitButton = new Button(shell, SWT.NONE);
+		submitButton.setBounds(329, 101, 105, 29);
+		submitButton.setText("Submit Query");
+		submitButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				System.out.println("Button Clicked");
+				}
+			});
 		
 	}
 }
